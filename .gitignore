@@ -14,3 +14,7 @@ response.json
 
 # API key
 key.json
+
+# Packagin
+*.lock
+*.toml
