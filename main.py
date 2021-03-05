@@ -16,7 +16,7 @@ KEY_RESPONSES = defaultdict(list)
 def index():
     return render_template(
         'index.html', 
-        key=KEY.next()
+        key=KEY.__next__()
     )
 
 
@@ -24,13 +24,12 @@ def flips_thread(key):
     for auction in bin_auctions(key):
         KEY_RESPONSES[key].append(auction)
 
-
 @app.route('/rpc/start_flips/<string:key>')
 def start_flips(key):
     KEY_RESPONSES[key] = []
     thread = threading.Thread(target=flips_thread, args=[key])
     thread.start()
-    return 200
+    return {"success": True}
 
 
 @app.route('/rpc/get_flips/<string:key>')

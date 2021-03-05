@@ -46,5 +46,3 @@ def get_auctions(key):
     print('Getting Page:', f'{i+1}/{page_count}')
     print('Finished Getting Pages.')
 
-
-print(dir(get_key()))

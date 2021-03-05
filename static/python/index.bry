@@ -1,0 +1,23 @@
+from browser import document, ajax
+
+KEY = "{{ key }}"
+
+def on_complete(req):
+    if req.status == 200:
+        document.write(req.text)
+    else:
+        document.write("error " + req.text)
+
+def start_flips():            
+    ajax.get("/rpc/start_flips/{KEY}",
+        data={},
+        oncomplete=on_complete
+    )
+        
+def get_flips():
+    ajax.get("/rpc/get_flips/{KEY}",
+        data={},
+        oncomplete=on_complete
+    )
+
+def 
